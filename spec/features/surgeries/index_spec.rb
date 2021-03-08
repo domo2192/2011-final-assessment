@@ -13,7 +13,7 @@ RSpec.describe 'Surgery index' do
     doctor6 = Doctor.create(name: "Johnny", university: "Duke", years_practiced: 4)
     DoctorSurgery.create(surgery_id: surgery1.id, doctor_id: doctor1.id)
     DoctorSurgery.create(surgery_id: surgery1.id, doctor_id: doctor2.id)
-    DoctorSurgery.create(surgery_id: surgery2.id, doctor_id: doctor4.id)
+    DoctorSurgery.create(surgery_id: surgery2.id, doctor_id: doctor1.id)
     DoctorSurgery.create(surgery_id: surgery2.id, doctor_id: doctor3.id)
     DoctorSurgery.create(surgery_id: surgery3.id, doctor_id: doctor5.id)
     DoctorSurgery.create(surgery_id: surgery3.id, doctor_id: doctor6.id)
@@ -25,6 +25,8 @@ RSpec.describe 'Surgery index' do
     expect(page).to have_content(surgery1.operating_room_number)
     expect(page).to have_content(surgery2.operating_room_number)
     expect(page).to have_content("Average Years Practiced of #{surgery1.title} is 7.5 years")
+    expect(page).to have_content("Average Years Practiced of #{surgery2.title} is 10.0 years")
+    expect(page).to have_content("Average Years Practiced of #{surgery3.title} is 3.0 years")
   end
 
   it "sorts the surguries by doctors experience" do
@@ -39,7 +41,7 @@ RSpec.describe 'Surgery index' do
     doctor6 = Doctor.create(name: "Johnny", university: "Duke", years_practiced: 4)
     DoctorSurgery.create(surgery_id: surgery1.id, doctor_id: doctor1.id)
     DoctorSurgery.create(surgery_id: surgery1.id, doctor_id: doctor2.id)
-    DoctorSurgery.create(surgery_id: surgery2.id, doctor_id: doctor4.id)
+    DoctorSurgery.create(surgery_id: surgery2.id, doctor_id: doctor1.id)
     DoctorSurgery.create(surgery_id: surgery2.id, doctor_id: doctor3.id)
     DoctorSurgery.create(surgery_id: surgery3.id, doctor_id: doctor5.id)
     DoctorSurgery.create(surgery_id: surgery3.id, doctor_id: doctor6.id)
