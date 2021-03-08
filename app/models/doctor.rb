@@ -5,4 +5,8 @@ class Doctor <ApplicationRecord
   validates_presence_of :university
   validates_numericality_of :years_practiced
 
+
+  def self.sort_by_years_experience
+    order(years_practiced: :desc)
+  end
 end
