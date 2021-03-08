@@ -43,7 +43,6 @@ RSpec.describe 'Surgery show' do
     DoctorSurgery.create(surgery_id: surgery1.id, doctor_id: doctor2.id)
     DoctorSurgery.create(surgery_id: surgery1.id, doctor_id: doctor4.id)
       visit surgery_path(surgery1)
-      save_and_open_page
       within("#mostexperienced-") do
         expect(page).to have_content(doctor4.name)
         expect(page).to have_content(doctor4.years_practiced)
