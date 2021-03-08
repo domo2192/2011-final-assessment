@@ -1,4 +1,9 @@
 class SurgeriesController < ApplicationController
+
+  def index
+    @surgeries = Surgery.sort_by_experience 
+  end
+
   def show
     @surgery = Surgery.find(params[:id])
     @doctors = @surgery.doctors

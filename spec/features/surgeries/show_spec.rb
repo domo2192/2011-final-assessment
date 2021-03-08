@@ -71,7 +71,6 @@ RSpec.describe 'Surgery show' do
     expect(page).to have_content("Add A Doctor To This Surgery")
     fill_in :name, with: "Bob"
     click_button("Submit")
-    save_and_open_page
     expect(page).to have_content(doctor5.name)
   end
 end

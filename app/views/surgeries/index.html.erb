@@ -1,0 +1,6 @@
+<h1> Surgery Index </h1>
+<% @surgeries.each do |surgery|%>
+<p>Average Years Practiced of <%= surgery.title %> is <%= surgery.years%> years
+  <%= surgery.day_of_week %>
+  <%= surgery.operating_room_number %></p>
+  <%end %>

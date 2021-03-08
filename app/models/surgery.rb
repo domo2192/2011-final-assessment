@@ -14,4 +14,9 @@ class Surgery <ApplicationRecord
     doctors.order(years_practiced: :desc).last
   end
 
+  def self.sort_by_experience
+    joins(:doctors).select('surgeries.*, avg(doctors.years_practiced) AS years').group('surgeries.id').order('years DESC')
+
+  end
+
 end
