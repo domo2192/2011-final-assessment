@@ -7,7 +7,7 @@ class Surgery <ApplicationRecord
 
 
   def most_experienced
-    doctors.order(years_practiced: :desc).max
+    doctors.order(years_practiced: :desc).first
   end
 
   def least_experienced

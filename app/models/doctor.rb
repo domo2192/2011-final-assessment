@@ -9,4 +9,8 @@ class Doctor <ApplicationRecord
   def self.sort_by_years_experience
     order(years_practiced: :desc)
   end
+
+  def self.find_by_name(name)
+    all.where("name ILIKE ?", name).first
+  end
 end

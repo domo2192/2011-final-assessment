@@ -54,6 +54,24 @@ RSpec.describe 'Surgery show' do
         expect(page).to have_content(doctor2.years_practiced)
         expect(page).not_to have_content(doctor4.name)
         expect(page).not_to have_content(doctor1.name)
-      end
     end
+  end
+
+  it "shows a add a doctor to this surgery" do
+    surgery1 = Surgery.create(title: 'Tonsillectomy', day_of_week: 'Monday', operating_room_number: 113)
+    doctor1 = Doctor.create(name: "Meridith", university: "Dartmouth", years_practiced: 11)
+    doctor2 = Doctor.create(name: "Ryan", university: "Texas", years_practiced: 5)
+    doctor4 = Doctor.create(name: "Johnny", university: "Duke", years_practiced: 25)
+    doctor5 = Doctor.create(name: "Bob", university: "Duke", years_practiced: 10)
+    doctor6 = Doctor.create(name: "Erica", university: "Duke", years_practiced: 10)
+    DoctorSurgery.create(surgery_id: surgery1.id, doctor_id: doctor1.id)
+    DoctorSurgery.create(surgery_id: surgery1.id, doctor_id: doctor2.id)
+    DoctorSurgery.create(surgery_id: surgery1.id, doctor_id: doctor4.id)
+    visit surgery_path(surgery1)
+    expect(page).to have_content("Add A Doctor To This Surgery")
+    fill_in :name, with: "Bob"
+    click_button("Submit")
+    save_and_open_page
+    expect(page).to have_content(doctor5.name)
+  end
 end

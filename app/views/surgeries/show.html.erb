@@ -19,3 +19,9 @@
     <p> Doctor: <%= @surgery.least_experienced.name%> <br>
     Years Practiced:<%= @surgery.least_experienced.years_practiced%></p>
   </section>
+
+<h4> Add A Doctor To This Surgery</h4>
+  <%= form_tag("/surgeries/#{@surgery.id}", method: "patch") do%>
+  <p><%= text_field_tag(:name, params[:doctor_id])%></p>
+  <%= submit_tag("Submit")%>
+  <%end %>
