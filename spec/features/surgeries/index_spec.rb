@@ -44,7 +44,6 @@ RSpec.describe 'Surgery index' do
     DoctorSurgery.create(surgery_id: surgery3.id, doctor_id: doctor5.id)
     DoctorSurgery.create(surgery_id: surgery3.id, doctor_id: doctor6.id)
       visit surgeries_path()
-      save_and_open_page
       expect(surgery2.title).to appear_before(surgery1.title)
       expect(surgery1.title).to appear_before(surgery3.title)
       expect(surgery2.title).to appear_before(surgery3.title)
